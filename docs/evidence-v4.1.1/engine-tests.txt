@@ -1,0 +1,24 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> nhon-le-sprite-studio@4.1.1 test:engines
+> node --test test-engines.mjs
+
+✔ target registry selects actual files and reports all runtimes untested (22.263447ms)
+✔ shared clock handles gaps, boundaries, loop, backwards seek and detached input (3.411619ms)
+✔ shared validator rejects interval overlap, path escape, malformed rect and unsupported coordinates (2.50802ms)
+✔ Canvas adapter renders asymmetric nonzero-row atlas, depth and blend against independent native pixels (4.611953ms)
+✔ Phaser adapter preserves seek/depth/blend and isolates frame names between two players (3.805531ms)
+✔ Three adapter converts nonzero-row UV and Y-up origin, keeps shared pages and frees clones (4.192444ms)
+(node:162) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ Cocos TS source transpiles with Node and handles atlas/depth/materials against an explicit API model (43.4873ms)
+✔ real CLI selects target without changing source or raster bytes and refuses invalid targets (2035.006897ms)
+✔ all-target and single-target exports retain identical PNGs, geometry and timing (667.555948ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3123.609908

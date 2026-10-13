@@ -1,0 +1,13 @@
+{
+  "name": "Nhon Le Sprite Studio",
+  "version": "4.1.1",
+  "source_commit": "6eb0223f7b40783538cbdf767e23cb4f2d76d884",
+  "source_git_dirty": false,
+  "source_tree_sha256": "dfaa9ccc242baa0db90743c5e3ac1e231027bc21e87ae2cd36c6cf9f6633ea43",
+  "made_by": "Nhon Le",
+  "bundled_skill": "produce-game-sprites v3.8",
+  "rig_module": "2.2.0",
+  "files": 205,
+  "private_cloud_projects_included": false,
+  "qa": "See docs/QA.md"
+}

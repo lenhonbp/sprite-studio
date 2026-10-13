@@ -1,0 +1,14 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> nhon-le-sprite-studio@4.1.1 test:canvas
+> node test-editor.mjs && STUDIO_OFFLINE=1 node test-editor.mjs && node --test cli/scripts/test-rig.mjs cli/scripts/test-v2.mjs
+
+Editor DOM/canvas interaction checks passed: edit/undo/redo, rig mode, equipment, hierarchy, tracks, clips, duration, ZIP export, new project. These are mocked DOM tests, not browser/CSS QA.
+Production editor checks passed: presets, timeline, native raster brush/undo/variant, shared undo/redo, invalid edit retention, draft protection, VFX/source ZIP. Browser layout/touch untested.
+Downloaded adapter bytes and ESM export preserved in modular/offline editor.
+Production form event order, export retention and per-panel draft saves passed.
+Multi-engine actual ZIP bytes, selector and unsaved-draft preservation passed in modular/offline editor.
+Editor DOM/canvas interaction checks passed: edit/undo/redo, rig mode, equipment, hierarchy, tracks, clips, duration, ZIP export, new project. These are mocked DOM tests, not browser/CSS QA.
+Production editor checks passed: presets, timeline, native raster brush/undo/variant, shared undo/redo, invalid edit retention, draft protection, VFX/source ZIP. Browser layout/touch untested.
+Downloaded adapter bytes and ESM export preserved in modular/offline editor.
+Production form event order, export retention and per-panel draft saves passed.

@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "ui_system_id": "portrait_rpg_ui",
+  "representation": "pixel",
+  "reference_canvas": [
+    1080,
+    1920
+  ],
+  "scale_mode": "integer_or_fit",
+  "safe_area": {
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "left": 0
+  },
+  "text_policy": "runtime_text",
+  "minimum_touch_size": [
+    88,
+    88
+  ],
+  "runtime": {
+    "engine": "generic",
+    "pixel_snap": true,
+    "integer_scale_preferred": true
+  },
+  "components": [
+    {
+      "id": "button_primary_default",
+      "group": "button_primary",
+      "role": "button",
+      "state": "default",
+      "path": "ui/button_primary_default.png",
+      "logical_size": [
+        240,
+        88
+      ],
+      "touch_size": [
+        240,
+        96
+      ],
+      "nine_slice": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "text_baked": false,
+      "alpha_required": true
+    },
+    {
+      "id": "button_primary_pressed",
+      "group": "button_primary",
+      "role": "button",
+      "state": "pressed",
+      "path": "ui/button_primary_pressed.png",
+      "logical_size": [
+        240,
+        88
+      ],
+      "touch_size": [
+        240,
+        96
+      ],
+      "nine_slice": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "text_baked": false,
+      "alpha_required": true
+    },
+    {
+      "id": "button_primary_disabled",
+      "group": "button_primary",
+      "role": "button",
+      "state": "disabled",
+      "path": "ui/button_primary_disabled.png",
+      "logical_size": [
+        240,
+        88
+      ],
+      "touch_size": [
+        240,
+        96
+      ],
+      "nine_slice": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "text_baked": false,
+      "alpha_required": true
+    }
+  ],
+  "required_state_groups": {
+    "button_primary": [
+      "default",
+      "pressed",
+      "disabled"
+    ]
+  },
+  "screen_flows": [
+    {
+      "screen": "inventory",
+      "primary_action": "equip_selected_item",
+      "components": [
+        "button_primary_default"
+      ]
+    }
+  ],
+  "slices": [
+    {
+      "id": "button_primary_default",
+      "source_sheet": "sources/ui-atlas.png",
+      "rect": [
+        0,
+        0,
+        240,
+        88
+      ],
+      "output": "ui/button_primary_default.png"
+    }
+  ],
+  "runtime_test_matrix": {
+    "viewports": [
+      "1080x1920",
+      "1170x2532"
+    ],
+    "locales": [
+      "en",
+      "vi"
+    ],
+    "input_modes": [
+      "touch"
+    ]
+  }
+}

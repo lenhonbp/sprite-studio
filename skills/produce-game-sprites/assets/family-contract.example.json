@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "family_id": "replace-with-roster-id",
+  "members": [
+    {"manifest": "characters/character-a/animation-set.json", "reference_frame_id": "idle_south_00"},
+    {"manifest": "characters/character-b/animation-set.json", "reference_frame_id": "idle_south_00"}
+  ],
+  "invariants": {
+    "representation": "pixel",
+    "cell_size": [64, 64],
+    "required_actions": ["idle", "walk", "attack", "hit", "death"],
+    "required_directions": ["south", "west", "east", "north"],
+    "origin_y_tolerance_px": 2,
+    "visible_height_tolerance_ratio": 0.12
+  }
+}

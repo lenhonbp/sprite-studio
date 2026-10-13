@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "art_system_id": "portrait_wuxia",
+  "representation": "pixel",
+  "camera": {
+    "projection": "top_down_3_4",
+    "character_facing_set": ["down", "left", "right", "up"]
+  },
+  "scale": {
+    "character_cell": [96, 96],
+    "world_tile": [48, 48],
+    "ui_reference_canvas": [1080, 1920]
+  },
+  "rendering": {
+    "outline": "dark_single_pixel",
+    "light_direction": "upper_left",
+    "alpha_policy": "mixed_by_asset_role",
+    "pixel_sampling": "nearest_integer_preferred"
+  },
+  "shared_tokens": {
+    "rarity_colors": ["common", "rare", "epic", "legendary"],
+    "material_language": ["cloth", "leather", "steel", "jade", "wood"],
+    "vfx_brightness_rule": "effects may exceed actor value range briefly but must preserve silhouette readability"
+  },
+  "contracts": {
+    "characters": "animation-set.json",
+    "character_metadata": "production-metadata.json",
+    "ui": "ui-contract.json",
+    "environment": "environment-contract.json",
+    "vfx": "vfx-contract.json"
+  }
+}

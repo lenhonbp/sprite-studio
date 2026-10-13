@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "environment_id": "mountain_path",
+  "projection": "top_down_3_4",
+  "representation": "pixel",
+  "world_tile": [48, 48],
+  "depth_sort": "base_point_y",
+  "sampling": "nearest_integer_preferred",
+  "terrain": {
+    "seam_test_repeat": [3, 3],
+    "transition_policy": "explicit_or_autotile",
+    "collision_is_separate_from_visible_bounds": true
+  },
+  "props": [
+    {
+      "id": "pine_tree_large",
+      "path": "environment/props/pine_tree_large.png",
+      "base_pivot": [72, 132],
+      "footprint_cells": [[0, 0]],
+      "collision_rect": [50, 110, 44, 24],
+      "occluder": true
+    }
+  ]
+}

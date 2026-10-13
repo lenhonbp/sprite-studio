@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-12",
+  "task": "Independent Phaser, Unity and generic handoff using bundled skill",
+  "source_sha256": "606581005513aab326866f13f38b572af285c07b045d6125dc1f1e9e9c1055fa",
+  "source_unchanged": true,
+  "targets": [
+    "phaser",
+    "unity",
+    "generic"
+  ],
+  "frames_per_target": 45,
+  "atlas_files_per_target": 9,
+  "referenced_atlas_pages": 8,
+  "pixel_equivalence": "45 frames and atlas cells matched native source",
+  "contract_results": [
+    {
+      "name": "generic-aura_back-contract-final-check.json",
+      "status": "review_required",
+      "errors": []
+    },
+    {
+      "name": "generic-burst_front-contract-final-check.json",
+      "status": "review_required",
+      "errors": []
+    },
+    {
+      "name": "generic-slash_front-contract-final-check.json",
+      "status": "review_required",
+      "errors": []
+    },
+    {
+      "name": "phaser-aura_back-contract-final-check.json",
+      "status": "review_required",
+      "errors": []
+    },
+    {
+      "name": "phaser-burst_front-contract-final-check.json",
+      "status": "review_required",
+      "errors": []
+    },
+    {
+      "name": "phaser-slash_front-contract-final-check.json",
+      "status": "review_required",
+      "errors": []
+    },
+    {
+      "name": "unity-aura_back-contract-final-check.json",
+      "status": "review_required",
+      "errors": []
+    },
+    {
+      "name": "unity-burst_front-contract-final-check.json",
+      "status": "review_required",
+      "errors": []
+    },
+    {
+      "name": "unity-slash_front-contract-final-check.json",
+      "status": "review_required",
+      "errors": []
+    }
+  ],
+  "independent_execution_checks": "4 passed; Unity exact-source-substring assertion failed after stronger cleanup implementation",
+  "unity_compiled": false,
+  "unity_played": false,
+  "visual": "not_reviewed",
+  "runtime": "not_tested"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "nhon-le-rig-tools",
+  "version": "2.2.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.80"
+  },
+  "scripts": {
+    "test": "node --test scripts/test-rig.mjs scripts/test-v2.mjs"
+  }
+}

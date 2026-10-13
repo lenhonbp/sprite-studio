@@ -1,0 +1,12 @@
+interface:
+  display_name: Game Art by Nhon Le
+  short_description: Nhon Le's personal game-art production workflow
+  default_prompt: Use $produce-game-sprites to produce and validate this game-art
+    asset family against the project's visual and runtime requirements.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  allow_implicit_invocation: true

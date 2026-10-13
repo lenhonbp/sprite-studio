@@ -1,0 +1,32 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> nhon-le-sprite-studio@4.1.1 test:handoff
+> node --test test-handoff.mjs && python3 scripts/test_release.py
+
+✔ complete real export passes deep pixels + source replay without modifying any input (1075.289281ms)
+✔ missing frame is an actionable failure (26.333384ms)
+✔ missing engine selection and handoff readme are rejected (42.326935ms)
+✔ PNG CRC damage fails even without a native decoder (23.346414ms)
+✔ atlas bounds and track intervals are rejected (36.539066ms)
+✔ contract timing cannot diverge from playback timing (25.674423ms)
+✔ source geometry and omitted effect tracks are detected (44.928897ms)
+✔ adapter bytes are checked as data, never executed (20.215407ms)
+✔ different valid PNG with unchanged atlas is found by decoded pixel comparison (52.007618ms)
+✔ source changes that retain geometry are caught by re-render (377.388068ms)
+✔ paths and symlinks outside the pack are rejected (35.177909ms)
+✔ baseline detects added/deleted/changed bytes and is never automatic approval (70.68938ms)
+✔ optional texture size and memory budgets fail independently (20.760397ms)
+✔ CLI rejects unknown/missing options, in-pack report and report overwrite (467.659479ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2426.342973
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.140s
+
+OK

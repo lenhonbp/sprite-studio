@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "source": "source/generated-sheet.png",
+  "alpha_threshold": 12,
+  "max_valley_to_peak_ratio": 0.18,
+  "max_edge_opaque_ratio": 0.02,
+  "groups": [
+    {
+      "name": "idle_front_right",
+      "rect": [90, 50, 240, 210],
+      "pose_centers": [51, 125, 195],
+      "allow_edge_contact": false
+    }
+  ]
+}

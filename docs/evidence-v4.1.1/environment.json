@@ -1,0 +1,40 @@
+{
+  "schema": "nhon-le-environment-check/v1",
+  "local_editor": "ready",
+  "checks": [
+    {
+      "name": "node",
+      "version": "24.19.0",
+      "status": "ready",
+      "purpose": "Local editor, CLI, MCP",
+      "action": null
+    },
+    {
+      "name": "engine_test_api",
+      "status": "ready",
+      "purpose": "Cocos source type-erasure checks",
+      "action": null
+    },
+    {
+      "name": "native_canvas",
+      "status": "ready",
+      "purpose": "CLI rendering and pixel verification"
+    },
+    {
+      "name": "python",
+      "status": "ready",
+      "version": "3.12.14",
+      "purpose": "Build, release verification and full art toolkit",
+      "action": null
+    },
+    {
+      "name": "pillow",
+      "status": "ready",
+      "version": "12.3.0",
+      "purpose": "Python sprite/art QA",
+      "action": null
+    }
+  ],
+  "engine_runtime": "not_tested",
+  "note": "Does not install dependencies, start servers, inspect private projects, or prove engine compatibility."
+}

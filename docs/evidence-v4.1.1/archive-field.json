@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "bundled_skill_files_unchanged": 92,
+  "extracted_deep_check": "passed",
+  "repack_without_git": true,
+  "source_commit_when_no_git": null
+}

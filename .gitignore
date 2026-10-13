@@ -1,0 +1,17 @@
+browser-export-test.zip
+canvas-editor-initial.png
+__pycache__/
+*.pyc
+
+browser-sheet-test.zip
+browser-gif-test.gif
+
+node_modules/
+*.log
+
+.studio/
+.env
+.env.*
+proof/
+browser-vfx-test.zip
+browser-source-test.zip

@@ -1,0 +1,8 @@
+{
+ "mcpServers":{
+  "nhon-le-sprite-studio":{
+   "command":"node",
+   "args":["/ABSOLUTE/PATH/TO/REPO/local/mcp-stdio.mjs","--data","/ABSOLUTE/PATH/TO/REPO/.studio"]
+  }
+ }
+}

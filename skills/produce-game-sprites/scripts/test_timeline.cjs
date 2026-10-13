@@ -1,0 +1,18 @@
+const assert = require('node:assert/strict');
+const {sample,duration} = require('../assets/timeline.js');
+const clip={loop:false,frames:[{duration_ms:80},{duration_ms:170},{duration_ms:50}],events:[{name:'impact',time_ms:80}]};
+assert.equal(duration(clip),300);
+assert.equal(sample(clip,0).index,0);
+assert.equal(sample(clip,79).index,0);
+assert.equal(sample(clip,80).index,1);
+assert.equal(sample(clip,249).index,1);
+assert.equal(sample(clip,250).index,2);
+assert.equal(sample(clip,300).ended,true);
+assert.equal(sample(clip,10000).index,2);
+assert.equal(sample({...clip,loop:true},300).index,0);
+assert.equal(sample({...clip,loop:true},380).index,1);
+assert.equal(sample({...clip,loop:true},300).ended,false);
+assert.deepEqual(sample(clip,80).events,['impact']);
+assert.deepEqual(sample({...clip,loop:true},300).events,[]);
+assert.throws(()=>sample(clip,-1));assert.throws(()=>sample(clip,Infinity));
+console.log('15 timeline assertions passed');

@@ -1,0 +1,9 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> nhon-le-sprite-studio@4.1.1 test
+> node scripts/run-tests.mjs
+
+Local passed: editor API ↔ CLI ↔ MCP stdio; cross-process CAS, restart, auth, import/export, lock, corrupt-state retention.
+Service passed: identity isolation, batch rollback, idempotency, revision conflicts, concurrent CAS, shared undo/redo, selection and MCP/UI resource. R2 is an in-memory CAS mock.
+Embedded bridge passed: host initialization, manual selection, chat edit polling, manual edit, shared undo/redo and conflict retention. Mock host, not ChatGPT iframe QA.
+Vault/report passed: detached snapshots, recovery across reload, backup import rollback, non-destructive merge, quota failure retention, unavailable storage and honest sampled preflight. Storage fallback exercised.

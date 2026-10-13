@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "asset_id": "replace-with-character-id",
+  "representation": "pixel",
+  "cell_size": [
+    64,
+    64
+  ],
+  "origin": [
+    32,
+    56
+  ],
+  "alpha_required": true,
+  "max_texture_size": 2048,
+  "gutter": 2,
+  "required_clips": [
+    "idle_south",
+    "walk_south",
+    "attack_south",
+    "hit_south",
+    "death_south"
+  ],
+  "clips": [
+    {
+      "name": "idle_south",
+      "action": "idle",
+      "direction": "south",
+      "loop": true,
+      "events": [],
+      "frames": [
+        {
+          "id": "idle_south_00",
+          "path": "frames/idle_south_00.png",
+          "duration_ms": 150
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "actions": [
+      "idle",
+      "walk",
+      "attack",
+      "hit",
+      "death"
+    ],
+    "directions": [
+      "south"
+    ]
+  },
+  "atlas_policy": {
+    "multipage": true,
+    "trim": false,
+    "extrude": false
+  }
+}

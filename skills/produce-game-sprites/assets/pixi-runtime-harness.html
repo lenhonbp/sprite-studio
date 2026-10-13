@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Pixi runtime verification</title>
+<body><script type="module">
+const query = new URLSearchParams(location.search);
+const frames = [], errors = [], events = [];
+let renderer;
+try {
+  await new Promise((resolve, reject) => {
+    const s = document.createElement('script'); s.src = '/engine.js';
+    s.onload = resolve; s.onerror = () => reject(new Error('Local Pixi build did not load'));
+    document.head.append(s);
+  });
+  const PIXI = window.PIXI;
+  if (!PIXI?.VERSION?.startsWith('8.')) throw new Error('Supply a PixiJS v8 UMD build');
+  const timeline = await fetch('/release/animations.json').then(r => {if (!r.ok) throw new Error('Timeline missing'); return r.json();});
+  const {createClockedSprite} = await import('/release/pixi-adapter.mjs');
+  const textures = {}, metadata = {}, references = {};
+  for (const page of timeline.atlases || [{image:'atlas.png', data:'pixi-atlas.json'}]) {
+    const data = await fetch('/release/' + page.data).then(r => r.json());
+    const base = await PIXI.Assets.load('/release/' + page.image);
+    base.source.scaleMode = timeline.representation === 'pixel' ? 'nearest' : 'linear';
+    const sheet = new PIXI.Spritesheet(base, data); await sheet.parse();
+    const image = await new Promise((resolve, reject) => {const im = new Image(); im.onload = () => resolve(im); im.onerror = reject; im.src = '/release/' + page.image;});
+    for (const [id, meta] of Object.entries(data.frames)) {
+      if (id in textures) throw new Error('Duplicate frame across atlas pages: ' + id);
+      textures[id] = sheet.textures[id]; metadata[id] = meta;
+      const canvas = document.createElement('canvas'); canvas.width = meta.sourceSize.w; canvas.height = meta.sourceSize.h;
+      const ctx = canvas.getContext('2d'), r = meta.frame, s = meta.spriteSourceSize;
+      ctx.drawImage(image, r.x, r.y, r.w, r.h, s.x, s.y, s.w, s.h);
+      references[id] = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    }
+  }
+  const [w, h] = timeline.cell_size;
+  renderer = await PIXI.autoDetectRenderer({width:w, height:h, preference:'webgl', backgroundAlpha:0, antialias:false, resolution:1});
+  const stage = new PIXI.Container();
+  for (const clip of timeline.clips) {
+    const controller = await createClockedSprite(PIXI, {textures}, timeline, clip.name, event => {
+      events.push(event);
+      if (event.frameId !== event.displayedFrameId) errors.push('Event/pose mismatch ' + clip.name);
+    });
+    const sprite = controller.sprite;
+    sprite.position.set(...timeline.origin); stage.addChild(sprite);
+    controller.start();
+    let cumulative = 0;
+    for (let index = 0; index < clip.frames.length; index++) {
+      const fr = clip.frames[index];
+      if (sprite.currentFrame !== index) errors.push('Timing mismatch ' + clip.name + '/' + fr.id);
+      const canvas = renderer.extract.canvas({target:stage, frame:new PIXI.Rectangle(0,0,w,h), resolution:1, clearColor:[0,0,0,0]});
+      const rgba = canvas.getContext('2d').getImageData(0,0,w,h).data;
+      const reference = references[fr.id];
+      let different = 0, visible = 0;
+      for (let i = 0; i < rgba.length; i += 4) {
+        if (rgba[i+3]) visible++;
+        let bad = Math.abs(rgba[i+3]-reference[i+3]) > 1;
+        // Compare premultiplied colours to account for low-alpha readback rounding.
+        for (let c = 0; c < 3; c++) if (Math.abs(rgba[i+c]*rgba[i+3]/255-reference[i+c]*reference[i+3]/255)>2) bad = true;
+        if (bad) different++;
+      }
+      if (!visible || different) errors.push(`${clip.name}/${fr.id}: ${different} mismatching pixels, visible=${visible}`);
+      frames.push({clip:clip.name, id:fr.id, index, duration_ms:fr.duration_ms, width:w, height:h, differentPixels:different, visiblePixels:visible,
+                   png:canvas.toDataURL('image/png')});
+      const next = cumulative + fr.duration_ms;
+      controller.advance(fr.duration_ms); cumulative = next;
+    }
+    if (clip.loop && sprite.currentFrame !== 0) errors.push('Loop did not wrap ' + clip.name);
+    if (!clip.loop && (sprite.currentFrame !== clip.frames.length-1 || controller.clock.state().playing)) errors.push('Terminal hold failed ' + clip.name);
+    const before = events.length; controller.stop(); controller.advance(10000);
+    if (events.length !== before) errors.push('Interrupted clock dispatched events ' + clip.name);
+    stage.removeChild(sprite); sprite.destroy();
+  }
+  window.__HARNESS_RESULT__ = {engine:'PixiJS',version:PIXI.VERSION,renderer:renderer.name,frames,events,errors,
+    limitation:'Rendered isolated atlas/clock test. Does not approve art, gameplay collision, transitions or target-device performance.'};
+} catch (e) {window.__HARNESS_RESULT__ = {frames,events,errors:errors.concat(String(e)),version:null};}
+finally {renderer?.destroy(); window.__HARNESS_DONE__ = true;}
+</script></body></html>

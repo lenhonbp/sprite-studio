@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';import {createVault} from './web/project-vault.mjs';import {projectReport} from './web/project-report.mjs';import {readFile} from 'node:fs/promises';import {validateProject} from './web/rig-core.mjs';
+const demo=JSON.parse(await readFile('web/demo-project.json','utf8')),data=new Map(),storage={getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};
+let vault=createVault({indexedDB:null,storage});
+const id=await vault.save(demo,'Original');demo.name='Edited';assert.notEqual((await vault.read(id)).name,'Edited');
+await vault.recover(demo);vault=createVault({indexedDB:null,storage});assert.equal((await vault.recovery()).project.name,'Edited');assert.equal((await vault.list()).length,1);
+const backup=await vault.exportAll();const invalid=structuredClone(backup);invalid.items.push({project:{id:'bad'}});await assert.rejects(()=>vault.importAll(invalid,validateProject));assert.equal((await vault.list()).length,1,'invalid backup must be atomic');
+await vault.importAll(backup,validateProject);assert.equal((await vault.list()).length,2);assert.notEqual((await vault.list())[1].id,id);await vault.remove(id);assert.equal(await vault.read(id),null);
+const failStorage={...storage,setItem(){throw Error('Quota exceeded');}};const limited=createVault({indexedDB:null,storage:failStorage});await assert.rejects(()=>limited.save(demo));assert.equal((await vault.list()).length,1,'failed save preserves previous shelf');
+const none=createVault({indexedDB:null,storage:null});assert.deepEqual(await none.list(),[]);await assert.rejects(()=>none.recover(demo),/chặn/);
+const report=projectReport(demo);assert.equal(report.technical,'valid');assert.equal(report.visual,'not_reviewed');assert.equal(report.runtime,'not_tested');assert.equal(report.online_eligible,true);
+console.log('Vault/report passed: detached snapshots, recovery across reload, backup import rollback, non-destructive merge, quota failure retention, unavailable storage and honest sampled preflight. Storage fallback exercised.');

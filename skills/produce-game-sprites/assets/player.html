@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Sprite motion proof</title>
+<style>
+body{margin:24px;background:#21252d;color:#eee;font:15px system-ui}button,select,input{margin:5px;padding:6px}canvas{display:block;border:1px solid #778;margin:16px 0}p{max-width:900px}fieldset{border:1px solid #667;max-width:900px}
+</style>
+<h1>Sprite motion proof</h1><p>Inspect native frames and timed playback. This player follows the declared clip loop/terminal policy; file-container loop metadata is separate. This is an offline proof, not engine acceptance.</p>
+<label>Clip <select id="clip"></select></label>
+<label>Zoom <select id="zoom"><option>1</option><option>2</option><option>4</option><option>8</option></select></label>
+<label>Background <select id="bg"><option value="checker">Checker</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
+<label><input type="checkbox" id="onion">Previous pose</label><label><input type="checkbox" id="guides" checked>Origin/ground</label>
+<fieldset><button id="play">Play</button><button id="reset">Reset</button><button id="prev">Previous</button><button id="next">Next</button><label>Time <input id="time" type="range" min="0" value="0"></label></fieldset>
+<canvas id="canvas"></canvas><p id="state">Loading frames…</p><p id="events"></p>
+<p><a href="contact-sheet.png">Native contact sheet</a></p>
+<script id="data" type="application/json">__SPRITE_DATA__</script>
+<script src="timeline.js"></script>
+<script>
+'use strict';
+const data = JSON.parse(document.getElementById('data').textContent);
+const el = id => document.getElementById(id);
+const ctx = el('canvas').getContext('2d');
+let images = {}, clip = data.manifest.clips[0], elapsed = 0, playing = false, last = null, ready = false;
+data.manifest.clips.forEach(c => {const op = document.createElement('option');op.value=c.name;op.textContent=c.name;el('clip').append(op);});
+function render() {
+  if (!ready) return;
+  const s = SpriteTimeline.sample(clip, elapsed), scale = +el('zoom').value;
+  const [w,h] = data.manifest.cell_size;
+  const canvas = el('canvas');canvas.width=w*scale;canvas.height=h*scale;
+  ctx.imageSmoothingEnabled = data.manifest.representation !== 'pixel';
+  ctx.fillStyle = el('bg').value === 'dark' ? '#111' : '#eee';ctx.fillRect(0,0,canvas.width,canvas.height);
+  if (el('bg').value === 'checker') {
+    for(let y=0;y<canvas.height;y+=8*scale)for(let x=0;x<canvas.width;x+=8*scale){
+      ctx.fillStyle=((x+y)/(8*scale))%2?'#aaa':'#ddd';ctx.fillRect(x,y,8*scale,8*scale);
+    }
+  }
+  if(el('onion').checked && s.index>0){ctx.globalAlpha=.3;ctx.drawImage(images[clip.frames[s.index-1].id],0,0,w*scale,h*scale);ctx.globalAlpha=1;}
+  ctx.drawImage(images[clip.frames[s.index].id],0,0,w*scale,h*scale);
+  if(el('guides').checked){
+    const [ox,oy]=data.manifest.origin;ctx.strokeStyle='#ff3';ctx.lineWidth=1;ctx.beginPath();
+    ctx.moveTo(0,oy*scale+.5);ctx.lineTo(w*scale,oy*scale+.5);ctx.moveTo(ox*scale+.5,0);ctx.lineTo(ox*scale+.5,h*scale);ctx.stroke();
+  }
+  el('time').max=s.total;el('time').value=s.time;
+  el('state').textContent=clip.name+' | '+clip.frames[s.index].id+' | '+s.time.toFixed(1)+' / '+s.total+' ms | '+(s.ended?'terminal hold':playing?'playing':'paused');
+  el('events').textContent='Declared events reached in current cycle: '+(s.events.join(', ')||'none')+'. Check actual dispatch separately in engine.';
+  el('play').textContent=playing?'Pause':'Play';
+}
+function selectClip(name){clip=data.manifest.clips.find(c=>c.name===name);if(!clip)throw new Error('Unknown clip');elapsed=0;playing=false;last=null;el('clip').value=name;render();}
+function setTime(ms){elapsed=ms;playing=false;last=null;render();}
+function step(delta){const s=SpriteTimeline.sample(clip,elapsed);const i=Math.max(0,Math.min(clip.frames.length-1,s.index+delta));setTime(clip.frames.slice(0,i).reduce((n,f)=>n+f.duration_ms,0));}
+el('clip').onchange=()=>selectClip(el('clip').value);
+el('time').oninput=()=>setTime(+el('time').value);
+el('prev').onclick=()=>step(-1);el('next').onclick=()=>step(1);
+el('reset').onclick=()=>setTime(0);
+el('play').onclick=()=>{if(!playing&&SpriteTimeline.sample(clip,elapsed).ended)elapsed=0;playing=!playing;last=null;render();};
+['zoom','bg','onion','guides'].forEach(id=>el(id).onchange=render);
+Promise.all(Object.entries(data.images).map(([id,url])=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[id]=im;resolve();};im.onerror=reject;im.src=url;}))).then(()=>{ready=true;render();}).catch(()=>{el('state').textContent='Frame load failed';});
+function tick(now){if(playing&&ready){if(last!==null)elapsed+=Math.max(0,now-last);if(SpriteTimeline.sample(clip,elapsed).ended)playing=false;render();}last=now;requestAnimationFrame(tick);}
+requestAnimationFrame(tick);
+window.spritePreview={selectClip,setTime,get status(){return{ready,playing,elapsed,clip:clip.name,...SpriteTimeline.sample(clip,elapsed)}}};
+</script></html>

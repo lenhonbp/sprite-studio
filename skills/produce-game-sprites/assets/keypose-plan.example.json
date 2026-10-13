@@ -1,0 +1,10 @@
+{
+  "total_frames": 8,
+  "cell_size": [64, 64],
+  "origin": [32, 56],
+  "keyframes": [
+    {"index": 0, "path": "poses/attack-ready.png", "origin": [32, 56], "role": "action-ready windup"},
+    {"index": 3, "path": "poses/attack-impact.png", "origin": [32, 56], "role": "strike impact"},
+    {"index": 7, "path": "poses/attack-recovery.png", "origin": [32, 56], "role": "recover toward next stance"}
+  ]
+}

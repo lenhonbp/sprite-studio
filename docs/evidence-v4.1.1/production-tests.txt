@@ -1,0 +1,30 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> nhon-le-sprite-studio@4.1.1 test:production
+> node --test test-production.mjs
+
+✔ legacy projects remain valid; extensions validate references and gates stay incomplete (4.66941ms)
+✔ curve endpoints are exact and seeking is deterministic across arbitrary sample order (2.423073ms)
+✔ event triggers use half-open intervals, repeated names spawn separately and terminal is empty (1.027444ms)
+✔ particle emitter follows moving socket at birth; frozen emitter retains trigger anchor (0.879022ms)
+✔ trail becomes connected textured segments with historical socket endpoints (1.625744ms)
+✔ flipbook uses authored frame order and clamps final frame (0.617789ms)
+✔ invalid curves, seeds, budgets and missing references fail without mutating source (2.007208ms)
+✔ removing event/socket/texture with live references is blocked; unbind allows repair (1.012613ms)
+✔ clip rename and retime retain valid binding; clip deletion removes bindings (0.772161ms)
+✔ asset variants preserve bytes, reject overwrite and cyclic lineage (1.205152ms)
+✔ native export round-trips atlas cells exactly, retains alpha/color/timing and separate depths (257.792513ms)
+✔ source bundle byte roundtrip, overwrite refusal and path/symlink escape rejection (10.693227ms)
+✔ CLI real processes preview/export/source pack fail cleanly on bad args (467.977856ms)
+✔ Pixi adapter clock contract is exercised with explicit fake engine objects, not runtime approval (1.692144ms)
+✔ socket local offsets and optional emission rotation use the sampled transform (0.749467ms)
+✔ preview respects terminal clip clock and reports authored tail cutoff (0.480703ms)
+✔ new raster candidates reject mislabeled data and decompression dimensions before persistence (0.681424ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 839.980881

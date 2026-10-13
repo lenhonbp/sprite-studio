@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "asset_id": "replace-with-character-id",
+  "coordinate_space": "cell_pixels",
+  "required_landmarks": ["head", "pelvis", "foot_l", "foot_r"],
+  "landmarks": {
+    "attack_south_00": {"head": [32, 14], "pelvis": [32, 39], "foot_l": [27, 56], "foot_r": [37, 56]},
+    "attack_south_01": {"head": [32, 14], "pelvis": [33, 39], "foot_l": [27, 56], "foot_r": [38, 55]}
+  },
+  "sockets": {
+    "attack_south_00": {"hand_main": [39, 33], "weapon_base": [40, 33], "weapon_tip": [54, 23], "cast_origin": [39, 33]},
+    "attack_south_01": {"hand_main": [41, 31], "weapon_base": [42, 31], "weapon_tip": [58, 35], "cast_origin": [41, 31]}
+  },
+  "required_sockets_by_action": {"attack": ["hand_main", "weapon_tip"]},
+  "depth_profiles": {
+    "south": ["fx_back", "weapon_back", "rear_arm", "torso", "front_arm", "weapon_front", "fx_front"],
+    "north": ["fx_back", "weapon_back", "front_arm", "torso", "rear_arm", "weapon_front", "fx_front"]
+  },
+  "clip_depth_profile": {"attack_south": "south"},
+  "static_regions": [
+    {"name": "ground_anchor", "rect": [22, 53, 20, 8], "clips": ["idle_south"], "max_changed_ratio": 0.05}
+  ],
+  "temporal_thresholds": {
+    "silhouette_area_ratio": 0.20,
+    "bbox_center_px": 5.0,
+    "palette_jaccard_min": 0.50,
+    "landmark_step_px": 14.0
+  },
+  "locomotion": {
+    "walk_south": {
+      "stride_pixels": 12,
+      "cycle_ms": 600,
+      "pixels_per_world_unit": 0.20,
+      "world_speed_units_per_s": 100,
+      "speed_tolerance_ratio": 0.15,
+      "planted_foot_tolerance_px": 2.0
+    }
+  },
+  "transitions": [
+    {"from": "idle_south", "to": "walk_south", "intent": "no root pop"},
+    {"from": "walk_south", "to": "attack_south", "intent": "preserve ground/root and weapon hand"}
+  ],
+  "collision": {
+    "attack_south_01": {
+      "hurtboxes": [[24, 18, 18, 38]],
+      "hitboxes": [[40, 20, 20, 22]]
+    }
+  },
+  "provenance": {
+    "frames": {
+      "attack_south_00": {"method": "approved_master_edit", "tool": "replace-tool", "parent_frame_ids": []},
+      "attack_south_01": {"method": "keypose_edit", "tool": "replace-tool", "parent_frame_ids": ["attack_south_00"]}
+    }
+  },
+  "performance_budget": {
+    "max_total_rgba_bytes": 16777216,
+    "max_simultaneous_actors": 20
+  }
+}

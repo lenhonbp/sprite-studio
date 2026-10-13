@@ -1,0 +1,32 @@
+✔ delivered generic clock: actual track gaps, every frame boundary, backwards seek and terminal hide (9.49477ms)
+✔ all 45 delivered RGBA frames and nonzero atlas cells reproduce current frozen native source pixels (333.527659ms)
+✔ delivered Phaser adapter consumes all real pages and timelines via an explicit API model (10.115246ms)
+✔ delivered requested adapter files match the now-stable repository exporter (16.892306ms)
+✖ Unity delivered source contains required mapping/ownership; coordinates calculated for every real frame (source review only) (7.73979ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 896.327018
+
+✖ failing tests:
+
+test at integration-tests/test-handoff.mjs:78:1
+✖ Unity delivered source contains required mapping/ownership; coordinates calculated for every real frame (source review only) (7.73979ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(cs.includes(s))
+  
+      at TestContext.<anonymous> (file://independent/integration-tests/test-handoff.mjs:80:234)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

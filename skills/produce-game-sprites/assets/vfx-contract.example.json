@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "vfx_id": "sword_arc_blue",
+  "representation": "pixel",
+  "attachment_space": "socket",
+  "socket": "weapon_tip",
+  "loop": false,
+  "blend_intent": "additive_or_engine_equivalent",
+  "alpha_policy": "soft",
+  "frames": [
+    {
+      "id": "fx_000",
+      "path": "vfx/sword_arc_000.png",
+      "duration_ms": 50
+    },
+    {
+      "id": "fx_001",
+      "path": "vfx/sword_arc_001.png",
+      "duration_ms": 50
+    },
+    {
+      "id": "fx_002",
+      "path": "vfx/sword_arc_002.png",
+      "duration_ms": 80
+    }
+  ],
+  "events": {
+    "visual_peak_ms": 70,
+    "gameplay_hit_ms": 60
+  },
+  "performance_budget": {
+    "max_simultaneous_instances": 8,
+    "allow_large_transparent_canvas": false
+  },
+  "cell_size": [
+    128,
+    128
+  ]
+}

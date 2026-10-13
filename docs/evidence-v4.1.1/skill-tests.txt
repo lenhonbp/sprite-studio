@@ -1,0 +1,13 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> nhon-le-sprite-studio@4.1.1 test:skill
+> node scripts/test-skill.mjs
+
+......................................................................................................................
+----------------------------------------------------------------------
+Ran 118 tests in 1.967s
+
+OK
+15 timeline assertions passed
+23 DOM/canvas assertions passed (mocked; browser visual review not performed)
+Clip clock and render-result negative/coverage regressions passed (no engine rendering claimed)

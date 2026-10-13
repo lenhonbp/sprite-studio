@@ -1,0 +1,104 @@
+{
+  "default_cell_size": [
+    128,
+    128
+  ],
+  "effects": [
+    {
+      "alpha_policy": "soft",
+      "blend_intent": "additive",
+      "events": {
+        "gameplay_hit_ms": 120,
+        "visual_peak_ms": 130
+      },
+      "frames": [
+        {
+          "duration_ms": 60,
+          "id": "fx_000",
+          "path": "vfx/fire_burst_000.png"
+        },
+        {
+          "duration_ms": 60,
+          "id": "fx_001",
+          "path": "vfx/fire_burst_001.png"
+        },
+        {
+          "duration_ms": 60,
+          "id": "fx_002",
+          "path": "vfx/fire_burst_002.png"
+        },
+        {
+          "duration_ms": 90,
+          "id": "fx_003",
+          "path": "vfx/fire_burst_003.png"
+        }
+      ],
+      "loop": false,
+      "taxonomy": "impact-burst",
+      "vfx_contract": "fire_burst.contract.json",
+      "vfx_id": "fire_burst"
+    },
+    {
+      "alpha_policy": "soft",
+      "blend_intent": "additive",
+      "cell_size": [
+        96,
+        96
+      ],
+      "events": {
+        "gameplay_hit_ms": 0,
+        "visual_peak_ms": 240
+      },
+      "frames": [
+        {
+          "duration_ms": 120,
+          "id": "fx_000",
+          "path": "vfx/ember_aura_000.png"
+        },
+        {
+          "duration_ms": 120,
+          "id": "fx_001",
+          "path": "vfx/ember_aura_001.png"
+        },
+        {
+          "duration_ms": 120,
+          "id": "fx_002",
+          "path": "vfx/ember_aura_002.png"
+        },
+        {
+          "duration_ms": 120,
+          "id": "fx_003",
+          "path": "vfx/ember_aura_003.png"
+        }
+      ],
+      "loop": true,
+      "taxonomy": "status-aura",
+      "vfx_id": "ember_aura"
+    }
+  ],
+  "generation": {
+    "adapter": "pixellab",
+    "cost_per_effect_usd": 0.05,
+    "fixed_seed": 424242,
+    "log_fields": [
+      "vfx_id",
+      "model",
+      "seed",
+      "prompt",
+      "date"
+    ],
+    "prompt_recipe": "pixel-art game VFX, EXACTLY 4 isolated cells, identical camera and scale, no zoom or morphing, native RGBA alpha preferred; taxonomy: impact-burst",
+    "reference_image": "refs/ember_ref.png"
+  },
+  "marketplace": {
+    "ai_disclosure": true,
+    "ai_generated": true,
+    "license": "single-seat commercial use in games; no resale or redistribution as-is",
+    "price_usd": 5.0,
+    "target": "itch.io"
+  },
+  "pack_id": "ember_fx_pack_01",
+  "representation": "pixel",
+  "schema_version": 1,
+  "title": "Ember FX Pack 01 \u2014 pixel fire & explosion effects"
+}

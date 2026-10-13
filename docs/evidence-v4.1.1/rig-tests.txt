@@ -1,0 +1,57 @@
+✔ real embedded raster project validates (2.450064ms)
+✔ parent rotation maps child sockets (1.580366ms)
+✔ inverse matrix roundtrip (0.159971ms)
+✔ sparse channels interpolate independently (0.176085ms)
+✔ pre-key rest values are preserved (0.194162ms)
+✔ shortest rotation arc (0.120351ms)
+✔ explicit spin preserves authored rotation distance (0.160261ms)
+✔ step interpolation holds earlier key (0.116274ms)
+✔ smooth interpolation has smoothstep value (0.152038ms)
+✔ loop wrap and negative time (5.604656ms)
+✔ one-shot clamps and returns terminal authored pose (0.347552ms)
+✔ weapon socket remains at grip bone for every attack sample (3.031238ms)
+✔ slot tracks switch image and depth discretely (1.216719ms)
+✔ hierarchy cycles rejected (0.528815ms)
+✔ missing parents rejected (0.314823ms)
+✔ non-finite scale and negative scale rejected (1.018741ms)
+✔ duplicate key time rejected (0.824079ms)
+✔ unknown and untrusted attachment references rejected (1.75601ms)
+✔ URLs and script sources rejected (0.276686ms)
+✔ bone named constructor safely resolves (0.633202ms)
+✔ invalid key edit is transactional (4.637082ms)
+✔ upsert replaces key and preserves unrelated clips (1.468007ms)
+✔ integer frame durations sum exactly for arbitrary FPS (0.454233ms)
+✔ final one-shot export sample is terminal (0.081282ms)
+✔ runaway frame export budget rejected (0.101222ms)
+✔ writes preserve existing files (14.378087ms)
+✔ real PNG rendering and manifest/socket export (362.407317ms)
+✔ clip duplication and rename preserve tracks and reject duplicate identifiers transactionally (4.478233ms)
+✔ bone rename rewrites hierarchy, slots, sockets and all tracks (1.089959ms)
+✔ delete subtree removes referencing tracks, equipment and skin assignments (1.341707ms)
+✔ reparent preserves rest world coordinates and rejects cycles (0.942827ms)
+✔ animated reparent and shear are rejected without changing source (0.395755ms)
+✔ slot transforms interpolate, attachment/order step and alpha renders (1.029788ms)
+✔ moving key does not overwrite occupied time and retime collisions preserve source (0.726793ms)
+✔ full pose can be baked at a new time (2.758927ms)
+✔ events, sockets and skins survive project serialization (1.122878ms)
+✔ CCD reaches feasible goal with baked rotations and keeps limb lengths (1.306775ms)
+✔ unreachable IK reports residual and does not stretch (5.375712ms)
+✔ coverage identifies missing action/direction pairs without fabricating clips (0.391789ms)
+✔ sheet layouts do not overlap cells or exceed page bounds (0.407482ms)
+✔ real candidate sheets round-trip every frame including terminal and clipping (42.795761ms)
+✔ GIF is decoded externally with exact duration and refused overwrite (109.670528ms)
+{
+  "saved": "/tmp/rig-op-ChaLZ6/out.json",
+  "approval": "not_reviewed"
+}
+✔ CLI edit persists a detached candidate and refuses existing output (8.663185ms)
+✔ IK honors authored angular bounds without extending reach (1.020885ms)
+✔ hidden base slots can be activated by attachment keys (0.213451ms)
+ℹ tests 45
+ℹ suites 0
+ℹ pass 45
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 519.708746

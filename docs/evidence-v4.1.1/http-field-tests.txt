@@ -1,0 +1,18 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> nhon-le-sprite-studio@4.1.1 test:field
+> node test-field.mjs && node test-field-production.mjs
+
+{
+  "status": "passed",
+  "cases": [
+    "real HTTP assets, cookie, host/origin, body limit, method, missing route",
+    "24 consecutive edits, bounded history, transactional rollback, six-process CAS, identical retry",
+    "actual HTTP bridge drag/pause, offline retention, lost-response idempotency, concurrent draft conflict",
+    "server stop/restart retains project and open editor renews local session",
+    "export retained source, actual stdio parser and shared project/check",
+    "structured invalid CLI error, SIGKILL before rename retains prior state, dead-lock recovery, UTF-8 history byte budget"
+  ],
+  "finalRevision": 33
+}
+Production HTTP field passed: real server/assets → VFX atomic batch → shared effect selection → independent CLI read → invalid batch rollback → six-process CAS → undo/redo → export → restart persistence. No browser or engine simulated into acceptance.
